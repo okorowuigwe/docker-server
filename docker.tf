@@ -1,7 +1,9 @@
 # configured aws provider with proper credentials
 provider "aws" {
   region    = "us-east-1"
-  profile   = "terraform-user"
+  shared_config_files      = ["/Users/austi/.aws/conf"]
+  shared_credentials_files = ["/Users/austi/.aws/credentials"]
+  profile                  = "dec-user"
 }
 
 # Create a remote backend for your terraform 
@@ -9,7 +11,7 @@ terraform {
   backend "s3" {
     bucket = "austinobioma-docker-statefile"
     region = "us-east-1"
-    profile = "terraform-user"
+    profile = "dec-user"
   }
 }
 
